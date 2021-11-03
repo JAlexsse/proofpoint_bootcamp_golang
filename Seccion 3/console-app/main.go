@@ -31,20 +31,24 @@ func main() {
 
 	menu()
 
-	for {
-		char, _, err := keyboard.GetSingleKey()
+	//section5 arrangment
+	char := ' ' // no puede ser '' por que no es un rune, al menos tiene que ser un caracter
+
+	for char != 'q' && char != 'Q' {
+		char, _, err = keyboard.GetSingleKey()
 
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		if char == 'q' || char == 'Q' {
-			break
+		i, _ := strconv.Atoi(string(char)) //transformamos char en int
+		el, ok := coffes[i]                //buscamos en el map si existe el valor
+		if ok {                            //si existe el valor entonces lo imprime
+			fmt.Printf("You chose %s\n", el)
 		}
-
-		i, _ := strconv.Atoi(string(char))
-		fmt.Println(fmt.Sprintf("You chose %s", coffes[i]))
 	}
+
+	fmt.Println("Thanks for using our services.")
 }
 
 func menu() {
