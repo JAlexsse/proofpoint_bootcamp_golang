@@ -160,6 +160,6 @@ func playerTurn() int {
 			fmt.Println("Invalid choice! Try again!")
 		}
 	}
-	fmt.Printf("You chose %s\n", playerChoice)
+	fmt.Printf("You chose %s\n", strings.ToUpper(playerChoice))
 	return playerValue
 }
